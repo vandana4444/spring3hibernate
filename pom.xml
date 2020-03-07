@@ -138,7 +138,7 @@
 				<version>2.5.1</version>
 				<configuration>
 					<formats>
-						<format>xml</format>
+						<format>html</format>
 					</formats>
 				</configuration>
 				<executions>

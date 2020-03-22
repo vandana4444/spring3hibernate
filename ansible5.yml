@@ -1,0 +1,47 @@
+---
+- hosts: app
+  become: yes
+  tasks:
+   - name: Group creation
+     group:
+        name: tomcat
+        state: present
+
+   - name: user creation
+     user:
+        name: tomcat
+        shell: /bin/false
+        group: tomcat
+        home: /opt/tomcat
+
+
+   - name: CREATE TOMCAT DIRECTORY
+     file:
+        path: /opt/tomcat
+        state: directory
+
+   - name: DOWNLOAD TOMCAT
+     uri:
+        url: http://apachemirror.wuchna.com/tomcat/tomcat-9/v9.0.31/bin/apache-tomcat-9.0.31.tar.gz
+        dest: /opt/tomcat
+
+
+   - name: EXTRACTION
+     unarchive:
+        src: /opt/tomcat/apache-tomcat-9.0.31.tar.gz
+        dest: /opt/tomcat
+        remote_src: yes
+
+   - name: CHANGING PERMISSION
+     file:
+        path: /opt/tomcat
+        state: directory
+        recurse: yes
+        group: tomcat
+        owner: tomcat
+        mode: "u=rwx,g=rx,o=rx"
+
+
+   - name: tomcat start
+     command: /opt/tomcat/apache-tomcat-9.0.31/bin/startup.sh
+

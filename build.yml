@@ -1,0 +1,21 @@
+---
+- name: deploying war file to the target
+  hosts: app
+  become: true
+  tasks:
+  - name: service file of tomcat is copied to the target
+    copy:
+      src: /opt/tomcat/
+      dest: /etc/systemd/system/
+  - name: Spring3HibernateApp.war file is copied to the target tomcat directory
+    copy:
+      src: Spring3HibernateApp.war
+      dest: /opt/tomcat/webapps/
+  - name: starting the service of tomcat7
+    systemd:
+      name: tomcat
+      state: started
+      enabled: true
+      daemon_reload: true
+
+

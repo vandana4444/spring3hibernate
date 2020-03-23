@@ -5,7 +5,7 @@
   tasks:
   - name: service file of tomcat is copied to the target
     copy:
-      src: /opt/tomcat/
+      remote_src: /opt/tomcat/
       dest: /etc/systemd/system/
   - name: Spring3HibernateApp.war file is copied to the target tomcat directory
     copy:

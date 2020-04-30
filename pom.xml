@@ -35,7 +35,7 @@
 				<configuration>
 					<!-- Enables analysis which takes more memory but finds more bugs. If 
 						you run out of memory, changes the value of the effort element to 'low'. -->
-				<effort>Max</effort>
+				<effort>Low</effort>
 					<!-- Reports all bugs (other values are medium and max) -->
 					<threshold>Low</threshold>
 					<!-- Produces XML report -->
@@ -111,7 +111,7 @@
 				<configuration>
 					<!-- Enables analysis which takes more memory but finds more bugs. If 
 						you run out of memory, changes the value of the effort element to 'Low'. -->
-					<effort>Max</effort>
+					<effort>Low</effort>
 					<!-- Build doesn't fail if problems are found -->
 					<failOnError>false</failOnError>
 					<!-- Reports all bugs (other values are medium and max) -->
